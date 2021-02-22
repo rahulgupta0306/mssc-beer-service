@@ -2,6 +2,8 @@ package demo.web.controller;
 
 import java.util.UUID;
 
+import javax.validation.Valid;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,12 +27,12 @@ public class BeerController {
 	}
 
 	@PostMapping
-	public ResponseEntity<Object> saveNewBeer(@RequestBody BeerDto beerdto) {
+	public ResponseEntity<Object> saveNewBeer(@Valid @RequestBody BeerDto beerdto) {
 		return new ResponseEntity<>(HttpStatus.CREATED);
 	}
 
 	@PutMapping("/{beerId}")
-	public ResponseEntity<Object> updateBeerById(@PathVariable UUID beerId, @RequestBody BeerDto beerdto) {
+	public ResponseEntity<Object> updateBeerById(@PathVariable UUID beerId, @Valid @RequestBody BeerDto beerdto) {
 		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 	}
 }
